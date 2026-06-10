@@ -1,0 +1,14 @@
+#!/bin/sh
+# Pre-commit hook: Run tests before allowing commit
+# Setup: npm install husky --save-dev && npx husky install
+
+echo "🧪 Running tests before commit..."
+npm test
+
+if [ $? -ne 0 ]; then
+  echo "❌ Tests failed. Commit aborted."
+  exit 1
+fi
+
+echo "✅ Tests passed. Proceeding with commit."
+exit 0
